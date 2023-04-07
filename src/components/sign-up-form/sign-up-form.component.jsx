@@ -31,7 +31,7 @@ const resetFormFields =()=>{
   const handleSubmit = async(event) =>{
     
     event.preventDefault();
-    console.log('Inside ')
+    
 
     if(password !== confirmPassword){
         alert('Passwords do not match');
