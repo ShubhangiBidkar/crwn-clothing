@@ -37,7 +37,6 @@ googleProvider.setCustomParameters({
     promt:"select_account"
 });
 
-
 export const auth = getAuth();
 
 export const signInWithGooglePopup = () => signInWithPopup(auth,googleProvider);
@@ -88,6 +87,6 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
     return await signInWithEmailAndPassword(auth, email, password);
   };
 
-
+// signOut the user
 export const signOutUser =async ()=>{ await signOut(auth);
 }  
