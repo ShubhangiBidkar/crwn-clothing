@@ -7,7 +7,7 @@ import {
   createDocumentFromUserAuth,
   signInAuthUserWithEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
-import { UserContext } from '../../context/user.context';
+
 
 
 import './sign-in-form.styles.scss';
@@ -21,15 +21,15 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  const {setCurrentUser} =useContext(UserContext)
+  
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createDocumentFromUserAuth(user);
+    await signInWithGooglePopup();
+    
   };
 
   const handleSubmit = async (event) => {
@@ -41,8 +41,8 @@ const SignInForm = () => {
         password
       );
 
-    //   sets it in the UserContext and access in navigation
-      setCurrentUser(user);
+    
+    //   setCurrentUser(user);
       console.log(user);
       resetFormFields();
     } catch (error) {

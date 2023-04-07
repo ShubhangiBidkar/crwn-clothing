@@ -7,7 +7,8 @@ import {getAuth,
         GoogleAuthProvider,
         createUserWithEmailAndPassword,
         signInWithEmailAndPassword,
-        signOut,} from 'firebase/auth'
+        signOut,
+        onAuthStateChanged} from 'firebase/auth'
 // This if for getting a document and settiong a document from fireStore database
 import {doc,
         getFirestore,
@@ -38,6 +39,7 @@ googleProvider.setCustomParameters({
 });
 
 export const auth = getAuth();
+console.log(auth);
 
 export const signInWithGooglePopup = () => signInWithPopup(auth,googleProvider);
 
@@ -90,3 +92,8 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 // signOut the user
 export const signOutUser =async ()=>{ await signOut(auth);
 }  
+
+// Observer pattern
+export const onAuthStateChangedListener = (callback) =>
+
+  onAuthStateChanged(auth, callback);    
