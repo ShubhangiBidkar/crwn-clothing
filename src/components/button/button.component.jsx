@@ -6,7 +6,7 @@ const BUTTON_TYPE_CLASSES = {
 };
 
 const Button =({children,butttonType,...otherProps}) =>{
-    console.log(BUTTON_TYPE_CLASSES[butttonType]);
+    // console.log(BUTTON_TYPE_CLASSES[butttonType]);
     return(
         // {...otherProps is for type='submit passes to the button}
         <button className={`button-container ${BUTTON_TYPE_CLASSES[butttonType]}`}{...otherProps}>

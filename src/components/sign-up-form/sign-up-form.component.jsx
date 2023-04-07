@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { createAuthUserWithEmailAndPassword ,createDocumentFromUserAuth} from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import './sign-up-form.styles.scss';
 import Button from "../button/button.component";
+import { UserContext } from "../../context/user.context";
 
 const defaultFormFields = {
   displayName: "",
@@ -14,7 +15,7 @@ const defaultFormFields = {
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
-
+  const {setCurrentUser} =useContext(UserContext);
 //    console.log(formFields);
 
 // we create a generic handleChange function that looks at the name attribute (name=) on each input type and dynamically sets the component’s state based on the input field’s name attribute (name=) and the value associated with it.
@@ -40,6 +41,8 @@ const resetFormFields =()=>{
 
     try{
         const {user} = await createAuthUserWithEmailAndPassword(email,password)
+        // sets user in context
+        setCurrentUser(user);
         await createDocumentFromUserAuth(user,{displayName})
         resetFormFields();
    
