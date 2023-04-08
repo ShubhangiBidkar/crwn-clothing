@@ -9,11 +9,8 @@ import './navigation.styles.scss';
 const Navigation = () =>{
 
     const {currentUser,setCurrentUser} =useContext(UserContext);
-    console.log(currentUser);
-  
-
-
-    return(
+    // console.log(currentUser);
+  return(
         <>
             <div className="navigation">
                 <Link className="logo-container" to='/'>
