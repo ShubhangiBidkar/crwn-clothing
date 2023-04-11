@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import { UserProvider } from './context/user.context'
-import { ProductsProvider } from './context/products.context'
+import { CategoriesProvider } from './context/categories.context'
 import { CartProvider } from './context/cart-context'
 import './index.scss'
 
@@ -12,11 +12,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
     {/* any component inside of this user provider nested deep within the app can access the context value inside of the provider itself. */}
       <UserProvider>
-        <ProductsProvider>
+        <CategoriesProvider>
           <CartProvider>
             <App />
           </CartProvider>
-        </ProductsProvider>
+        </CategoriesProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
