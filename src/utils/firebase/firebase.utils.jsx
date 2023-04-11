@@ -13,7 +13,9 @@ import {getAuth,
 import {doc,
         getFirestore,
         getDoc,
-        setDoc} from 'firebase/firestore'
+        setDoc,
+        collection,
+        writeBatch} from 'firebase/firestore'
     
 
 // Get this from the the firebase after you register your project using the web(<>)
@@ -46,6 +48,24 @@ export const signInWithGoogleRedirect = () => signInWithRedirect(auth,googleProv
 
 // Get the database
 export const db = getFirestore();
+
+// Creates a new collection in firestore database
+export const addCollectionAndDocuments = async (collectionKey,objectsToAdd) =>{
+   
+    const collectionRef = collection(db,collectionKey);
+
+    const batch =writeBatch(db);
+
+    objectsToAdd.forEach((object) => {
+        const docRef = doc(collectionRef, object.title.toLowerCase());
+        batch.set(docRef, object);
+     });
+
+    await batch.commit();
+    console.log('done');
+};
+
+
 
 // Crreates a document in firestore database
 export const createDocumentFromUserAuth = async(userAuth , additionalInformation={}) =>{
