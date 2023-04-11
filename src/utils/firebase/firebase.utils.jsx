@@ -15,7 +15,9 @@ import {doc,
         getDoc,
         setDoc,
         collection,
-        writeBatch} from 'firebase/firestore'
+        writeBatch,
+        query,
+        getDocs} from 'firebase/firestore'
     
 
 // Get this from the the firebase after you register your project using the web(<>)
@@ -66,6 +68,24 @@ export const addCollectionAndDocuments = async (collectionKey,objectsToAdd) =>{
 };
 
 
+// Retrievs the collection categories from the firestore database
+export const getCategoriesAndDocument = async () =>{
+
+    const collectionRef = collection(db,'categories');
+    const q =query(collectionRef);
+    // console.log(q);
+
+    const querySnapShot =  await getDocs(q);
+    // console.log(querySnapShot);
+
+    const categoryMap = querySnapShot.docs.reduce((acc,docSnapShot)=>{
+        const {title,items} =docSnapShot.data();
+        acc[title.toLowerCase()] =items;
+        return acc;
+    },{})
+
+    return categoryMap;
+}
 
 // Crreates a document in firestore database
 export const createDocumentFromUserAuth = async(userAuth , additionalInformation={}) =>{
