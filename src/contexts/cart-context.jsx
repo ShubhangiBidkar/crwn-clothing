@@ -3,7 +3,7 @@ import { createContext ,useEffect,useState} from "react";
 const addCartItem = (cartItems,productToAdd) =>{
 
     // find if cartItems contains productToAdd
-    console.log(cartItems);
+   
     const existingCartItem = cartItems.find((cartItem) => (
        cartItem.id === productToAdd.id
         
