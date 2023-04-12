@@ -6,7 +6,8 @@ import { useContext } from "react";
 import { UserContext } from "../../context/user.context";
 import { CartContext } from "../../context/cart-context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
-import './navigation.styles.scss';
+import { NavigationContainer,NavLink,NavLinks,LogoConatiner } from "./navigation.styles.jsx";
+import './navigation.styles.jsx';
 
 // Navigation Component
 const Navigation = () =>{
@@ -16,21 +17,21 @@ const Navigation = () =>{
     // console.log(currentUser);
   return(
         <>
-            <div className="navigation">
-                <Link className="logo-container" to='/'>
+            <NavigationContainer>
+                <LogoConatiner to='/'>
                     <CrwnLogo className='logo' >Logo</CrwnLogo>
-                </Link>
+                </LogoConatiner>
                 
-                <div className="nav-links-container">
-                    <Link className="nav-link" to='/shop'>Shop</Link>
+                <NavLinks>
+                    <NavLink to='/shop'>Shop</NavLink>
                     {currentUser ?
-                        (<span className="nav-link" onClick={signOutUser}>Sign Out</span>):  
-                        (<Link className="nav-link" to='/sign-in'>Sign In</Link>) 
+                        (<NavLink as='span' onClick={signOutUser}>Sign Out</NavLink>):  
+                        (<NavLink to='/sign-in'>Sign In</NavLink>) 
                      }
                      <CartIcon />
-                </div>
+                </NavLinks>
                 {isCartOpen && <CartDropdown />}            
-            </div>
+            </NavigationContainer>
             {/* This will render the nested route here which we are nesting in App.js */}
             <Outlet/>
             
