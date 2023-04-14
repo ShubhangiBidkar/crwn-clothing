@@ -1,5 +1,6 @@
 import { Children, createContext,useState,useEffect,useReducer } from "react";
 import { onAuthStateChangedListener,createDocumentFromUserAuth } from "../utils/firebase/firebase.utils";
+import { createAction } from "../utils/reducer/reducer.utils";
 
 // Using the context in React requires 3 simple steps: creating the context, providing the context, and consuming the context.
 
@@ -41,7 +42,7 @@ export const UserProvider = ({children})=>{
 
   const setCurrentUser = (user) =>
   // when dispatch is called the userReducer() gets its action 
-    dispatch({ type: USER_ACTION_TYPES.SET_CURRENT_USER, currentUser: user });
+    dispatch(createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user ));
 
   const value = {currentUser,setCurrentUser};
 
