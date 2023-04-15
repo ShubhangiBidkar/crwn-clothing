@@ -96,6 +96,7 @@ export const createDocumentFromUserAuth = async(userAuth , additionalInformation
     
     // if userSnapShot does not exists in the database then create on
     if(!userSnapShot.exists()){
+        // console.log("inside if of createDoc")
         const {displayName, email} = userAuth;
         const createdAt = new Date();
 
@@ -134,6 +135,5 @@ export const signOutUser =async ()=>{ await signOut(auth);
 }  
 
 // Observer pattern
-export const onAuthStateChangedListener = (callback) =>
-
-  onAuthStateChanged(auth, callback);    
+export const onAuthStateChangedListener = (callback) =>{
+          return onAuthStateChanged(auth, callback);  }  
