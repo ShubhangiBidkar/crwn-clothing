@@ -15,11 +15,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <BrowserRouter>
       {/* any component inside of this user provider nested deep within the app can access the context value inside of the provider itself. */}
         {/* <UserProvider> */}
-          <CategoriesProvider>
+          {/* <CategoriesProvider> */}
             <CartProvider>
               <App />
             </CartProvider>
-          </CategoriesProvider>
+          {/* </CategoriesProvider> */}
         {/* </UserProvider> */}
       </BrowserRouter>
     </Provider>
