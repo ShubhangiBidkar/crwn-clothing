@@ -79,13 +79,12 @@ export const getCategoriesAndDocument = async () =>{
     const querySnapShot =  await getDocs(q);
     // console.log(querySnapShot);
 
-    const categoryMap = querySnapShot.docs.reduce((acc,docSnapShot)=>{
-        const {title,items} =docSnapShot.data();
-        acc[title.toLowerCase()] =items;
-        return acc;
-    },{})
+    // const categoryMap = 
+    return querySnapShot.docs.map((doc)=>doc.data());
+    
+    
 
-    return categoryMap;
+    
 }
 
 // Crreates a document in firestore database
