@@ -16,9 +16,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       {/* any component inside of this user provider nested deep within the app can access the context value inside of the provider itself. */}
         {/* <UserProvider> */}
           {/* <CategoriesProvider> */}
-            <CartProvider>
+            {/* <CartProvider> */}
               <App />
-            </CartProvider>
+            {/* </CartProvider> */}
           {/* </CategoriesProvider> */}
         {/* </UserProvider> */}
       </BrowserRouter>
