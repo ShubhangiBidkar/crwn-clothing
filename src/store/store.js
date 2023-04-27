@@ -6,10 +6,10 @@ import logger from "redux-logger";
 import { rootReducer } from "./root-reduce";
 import { persistStore,persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-// import persistReducer from "redux-persist/es/persistReducer";
+import thunk from "redux-thunk";
 
 
-const middleWares = [process.env.NODE_ENV === 'development' && logger].filter(
+const middleWares = [process.env.NODE_ENV === 'development' && logger,thunk,].filter(
   Boolean
 );
 
