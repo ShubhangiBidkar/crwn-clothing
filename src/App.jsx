@@ -18,7 +18,7 @@ const dispatch = useDispatch()
   useEffect(() => {
     // When firebase calls the callback in onAuthStateChanged, it passes the user parameter into that callback. That user parameter refers to a firebase user account
     const unsubscribe = onAuthStateChangedListener((user) => {
-        console.log(user);
+        //console.log(user);
       if (user) {
          createDocumentFromUserAuth(user);
       }

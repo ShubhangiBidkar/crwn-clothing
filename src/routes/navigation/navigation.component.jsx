@@ -16,7 +16,7 @@ import './navigation.styles.jsx';
 // Navigation Component
 const Navigation = () =>{
     const currentUser = useSelector(selectCurrentUser);
-        console.log(currentUser)
+        // console.log(currentUser)
     const isCartOpen =useSelector(selectIsCartOpen);
   
   return(
